@@ -111,7 +111,7 @@ if (tests.dnd) {
   }
 } else {
   fileupload.className = 'hidden';
-  fileupload.querySelector('input').onchange = function () {
+  fileupload.getElementsByTagName('input')[0].onchange = function () {
     readfiles(this.files);
   };
 }
