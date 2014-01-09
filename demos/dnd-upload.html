@@ -38,19 +38,22 @@ var holder = document.getElementById('holder'),
       'image/gif': true
     },
     progress = document.getElementById('uploadprogress'),
-    fileupload = document.getElementById('upload');
-
-"filereader formdata progress".split(' ').forEach(function (api) {
-  if (tests[api] === false) {
-    support[api].className = 'fail';
-  } else {
-    // FFS. I could have done el.hidden = true, but IE doesn't support
-    // hidden, so I tried to create a polyfill that would extend the
-    // Element.prototype, but then IE10 doesn't even give me access
-    // to the Element object. Brilliant.
-    support[api].className = 'hidden';
+    fileupload = document.getElementById('upload'),
+    aryApis = "filereader formdata progress".split(' ');
+    
+  for(var i = 0; i < aryApis.length; i++){
+    var api = aryApis[i];
+    
+    if (tests[api] === false) {
+      support[api].className = 'fail';
+    } else {
+      // FFS. I could have done el.hidden = true, but IE doesn't support
+      // hidden, so I tried to create a polyfill that would extend the
+      // Element.prototype, but then IE10 doesn't even give me access
+      // to the Element object. Brilliant.
+      support[api].className = 'hidden';
+    }
   }
-});
 
 function previewfile(file) {
   if (tests.filereader === true && acceptedTypes[file.type] === true) {
